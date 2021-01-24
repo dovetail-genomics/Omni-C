@@ -31,7 +31,7 @@ Overview
 
 - This guide will take you step by step on how to QC your Omni-C library, how to interparate the QC results and how to generate :ref:`contact maps <GCM>`, study :ref: `chromatin structure<ITAD>`, use Omni-C data analyzing and enhancing your assembly and more. If you don't yet have a sequenced Omni-C library and you want to get familiar with the data, you can download Omni-C sequenced libraries from our publicaly available :ref:`data sets<DATASETS>`.
 
-- To :ref:`QC<LQ>` your library, first you will need to align the reads to the reference, filtering and additional alignment processing will be done using `pairtools package <https://github.com/open2c/pairtools>`_ and the final output `bam` file will be used for QC-ing the library and downstream steps.
+- The QC process starts with aligning the reads to a reference genome then retaining high quality mapped reads. From there the mapped data will be used to generating a pairs file with pairtools, which categorizes pairs by read type and insert distance, this step both flags and removes PCR duplicates. Once pairs are categorized, counts of each class are summed and reported.
 
 - If this is your first time following this tutorial, please check the :ref:`Before you begin page <BYB>` first.
 

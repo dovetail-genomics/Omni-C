@@ -28,7 +28,7 @@ Make sure that the following dependencies are installed:
 - `preseq <http://smithlabresearch.org/software/preseq/>`_
 - `samtools <https://github.com/samtools/samtools>`_
 
-
+If you are facing any issues with the installation of any of the dependencies, please contact the supporter of the relevant package. 
 python3 and pip3 are required, if you don't already have them installed, you will need sudo privileges.
 
 * Update and install python3 and pip3:
@@ -47,16 +47,16 @@ python3 and pip3 are required, if you don't already have them installed, you wil
    sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
 
-If you are working on a new machine and don't have the dependencies, you can use the ``installDep.sh`` script in this repository for updating your instance and installing the dependencies and python3. This process will take approximitly 10' and requiries sudo privileges. The scrit was tested on Ubuntu 18.04 with the latest version as of 04/11/2020
+If you are working on a new machine and don't have the dependencies, you can use the ``installDep.sh`` script in this repository for updating your instance and installing the dependencies and python3. This process will take approximatley 10' and requires sudo privileges. The script was tested on Ubuntu 18.04 with the latest version as of 04/11/2020
 
-If you choose to run the provided installetion script you will first need to set the permission to the file:
+If you choose to run the provided installation script you will first need to set the permission to the file:
 
 .. code-block:: console
 
    chmod +x ./Omni-C/installDep.sh
 
 
-And then run the installetion script:
+And then run the installation script:
 
 .. code-block:: console
 

@@ -3,32 +3,33 @@
 From fastq to final valid pairs bam file
 ========================================
 
-.. _impatient: 
+.. _Impatient:
 
-fastq to final valid pairs bam file - for the impatient
--------------------------------------------------------
+.. admonition:: fastq to final valid pairs bam file - for the impatient!
 
-If you just want to give it a shot and run all the alignment and filtering steps without going over all the details, we made a shorter version for you, with all the steps piped, outputing a final bam file with its index file and a dup stats file, otherwise move to the next section :ref:`fastq to final valid pairs bam file - step by step<step-by-step>`
+   If you just want to give it a shot and run all the alignment and filtering steps without going over all the details, we made a shorter version for you, with all the steps piped, outputting a final bam file with its index file and a dup stats file, otherwise move to the next section :ref:`fastq to final valid pairs bam file - step by step<step-by-step>`
 
-**Command:**
+   **Command:**
 
-.. code-block:: console
+   .. code-block:: console
 
-   bwa mem -5SP -T0 -t<cores> <ref.fa> <OmniC.R1.fastq.gz> <OmniC.R2.fastq.gz>| \ 
-   pairtools parse --min-mapq 40 --walks-policy 5unique \ 
-   --max-inter-align-gap 30 --nproc-in <cores> --nproc-out <cores> --chroms-path <ref.genome> | \ 
-   pairtools sort --tmpdir=<full_path/to/tmpdir> --nproc <cores>|pairtools dedup --nproc-in <cores> \ 
-   --nproc-out <cores> --mark-dups --output-stats <stats.txt>|pairtools split --nproc-in <cores> \ 
-   --nproc-out <cores> --output-pairs <mapped.pairs> --output-sam -|samtools view -bS -@<cores> | \
-   samtools sort -@<cores> -o <mapped.PT.bam>;samtools index <mapped.PT.bam>
+      bwa mem -5SP -T0 -t<cores> <ref.fa> <OmniC.R1.fastq.gz> <OmniC.R2.fastq.gz>| \
+      pairtools parse --min-mapq 40 --walks-policy 5unique \
+      --max-inter-align-gap 30 --nproc-in <cores> --nproc-out <cores> --chroms-path <ref.genome> | \
+      pairtools sort --tmpdir=<full_path/to/tmpdir> --nproc <cores>|pairtools dedup --nproc-in <cores> \
+      --nproc-out <cores> --mark-dups --output-stats <stats.txt>|pairtools split --nproc-in <cores> \
+      --nproc-out <cores> --output-pairs <mapped.pairs> --output-sam -|samtools view -bS -@<cores> | \
+      samtools sort -@<cores> -o <mapped.PT.bam>;samtools index <mapped.PT.bam>
+
+   **Example:**
+
+   .. code-block:: console
+
+      bwa mem -5SP -T0 -t16 hg38.fasta OmniC_2M_R1.fastq OmniC_2M_R2.fastq| pairtools parse --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 --nproc-in 8 --nproc-out 8 --chroms-path hg38.genome | pairtools sort --tmpdir=/home/ubuntu/ebs/temp/ --nproc 16|pairtools dedup --nproc-in 8 --nproc-out 8 --mark-dups --output-stats stats.txt|pairtools split --nproc-in 8 --nproc-out 8 --output-pairs mapped.pairs --output-sam -|samtools view -bS -@16 | samtools sort -@16 -o mapped.PT.bam;samtools index mapped.PT.bam
 
 
-**Example:**
-
-.. code-block:: console
-
-   bwa mem -5SP -T0 -t16 hg38.fasta OmniC_2M_R1.fastq OmniC_2M_R2.fastq| pairtools parse --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 --nproc-in 8 --nproc-out 8 --chroms-path hg38.genome | pairtools sort --tmpdir=/home/ubuntu/ebs/temp/ --nproc 16|pairtools dedup --nproc-in 8 --nproc-out 8 --mark-dups --output-stats stats.txt|pairtools split --nproc-in 8 --nproc-out 8 --output-pairs mapped.pairs --output-sam -|samtools view -bS -@16 | samtools sort -@16 -o mapped.PT.bam;samtools index mapped.PT.bam
-
+|clock| The full command above, with 2M read pairs on an Ubuntu 18.04 machine with 16 CPUs and 64GiB was completed in less than 5 minutes.
+On the same machine type.
 
 |clock| The full command above, with 2M read pairs on an Ubuntu 18.04 machine with 16 CPUs and 64GiB was completed in less than 5 minutes. 
 On the same machine type.
@@ -81,7 +82,7 @@ Bwa mem will output a sam file that you can either pipe or save to a path using 
 Recording valid ligation events
 +++++++++++++++++++++++++++++++
 
-We use the ``parse`` module of the ``pairtools`` pipeline to find ligation junctions in Omni-C (and other proximity ligation) libraries. When a ligation event is identified in the alignment file the pairtools pipeline will record the outer-most (5’) aligned base pair and the strand of each one of the paired reads into `.pairsam` file (pairam fromat captures SAM entries together with the Hi-C pair information). In addition, it will also asign a pair type for each event. e.g. if both reads aligned uniquely to only one region in the genome, the type UU (Unique-Unique) will be assigned to the pair. The following steps are necessary to identify the high quality valid pairs over low quality events (e.g. due to low mapping quality):
+We use the ``parse`` module of the ``pairtools`` pipeline to find ligation junctions in Omni-C (and other proximity ligation) libraries. When a ligation event is identified in the alignment file the pairtools pipeline will record the outer-most (5’) aligned base pair and the strand of each one of the paired reads into ``.pairsam`` file (pairsam format captures SAM entries together with the Hi-C pair information). In addition, it will also asign a pair type for each event. e.g. if both reads aligned uniquely to only one region in the genome, the type UU (Unique-Unique) will be assigned to the pair. The following steps are necessary to identify the high quality valid pairs over low quality events (e.g. due to low mapping quality):
 
 
 ``pairtools parse`` options:
@@ -101,7 +102,7 @@ We use the ``parse`` module of the ``pairtools`` pipeline to find ligation junct
 .. code-block:: console
 
    pairtools parse --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 --nproc-in <cores>\
---nproc-out <cores> --chroms-path <ref.genome> <aligned.sam> > <parsed.pairsam>
+  --nproc-out <cores> --chroms-path <ref.genome> <aligned.sam> > <parsed.pairsam>
 
 
 **Example:**
@@ -141,10 +142,14 @@ The parsed pairs are then sorted using `pairtools sort`
 
    pairtools sort --nproc 16 --tmpdir=/home/ubuntu/ebs/temp/  parsed.pairsam > sorted.pairsam
 
+.. admonition:: Important!
+
+   Please note that an absolute path for the temp directory is required for ``pairtools sort``, e.g. path of the structure ~/ebs/temp/ or ./temp/ will not work, instead, something of this sort is needed /home/user/ebs/temp/
+
 .. _DUPs:
 
-Removig dups
-++++++++++++
+Removig PCR duplicates
+++++++++++++++++++++++
 
 ``pairtools dedup`` detects molecules that could be formed via PCR duplication and tags them as “DD” pair type. These pairs should be excluded from downstream analysis. Use the pairtools dedup command with the `--output-stats` option to save the dup stats into a text file.
 
@@ -174,7 +179,7 @@ Removig dups
 Generate .pairs and bam files
 +++++++++++++++++++++++++++++
 
-The ``pairtools split`` command is used to split the final ``.pairsam`` into two files: ``.sam`` (or ``.bam``) and ``.pairs`` (``.pairsam`` has two extra columns containing the alignments from which the Micro-C pair was extracted, these two columns are not included in ``.pairs`` files)
+The ``pairtools split`` command is used to split the final ``.pairsam`` into two files: ``.sam`` (or ``.bam``) and ``.pairs`` (``.pairsam`` has two extra columns containing the alignments from which the Omni-C pair was extracted, these two columns are not included in ``.pairs`` files)
 
 ``pairtools split`` options:
 
