@@ -31,8 +31,6 @@ From fastq to final valid pairs bam file
 |clock| The full command above, with 2M read pairs on an Ubuntu 18.04 machine with 16 CPUs and 64GiB was completed in less than 5 minutes.
 On the same machine type.
 
-|clock| The full command above, with 2M read pairs on an Ubuntu 18.04 machine with 16 CPUs and 64GiB was completed in less than 5 minutes. 
-On the same machine type.
 
 .. |clock| image:: /images/clock.jpg
            :scale: 5 %
@@ -153,7 +151,7 @@ Removig PCR duplicates
 
 ``pairtools dedup`` detects molecules that could be formed via PCR duplication and tags them as “DD” pair type. These pairs should be excluded from downstream analysis. Use the pairtools dedup command with the `--output-stats` option to save the dup stats into a text file.
 
-```pairtools dedup``` options:
+``pairtools dedup``` options:
 
 .. csv-table::
    :file: tables/dedup.csv
@@ -175,6 +173,7 @@ Removig PCR duplicates
 
    pairtools dedup --nproc-in 8 --nproc-out 8 --mark-dups --output-stats stats.txt --output dedup.pairsam sorted.pairsam
 
+.. _GPB:
 
 Generate .pairs and bam files
 +++++++++++++++++++++++++++++
@@ -204,6 +203,7 @@ The ``pairtools split`` command is used to split the final ``.pairsam`` into two
 
    pairtools split --nproc-in 8 --nproc-out 8 --output-pairs mapped.pairs --output-sam unsorted.bam dedup.pairsam
 
+The ``.pairs`` file can be used for generating :ref:`contact matrix <GCM>`
 
 Generating the final bam file
 +++++++++++++++++++++++++++++
