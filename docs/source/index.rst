@@ -25,11 +25,11 @@ Overview
   - Shotgun sequencing-like even genome coverage enabling SNP calling, chromosome phasing and structural variant detection
   - Lower sequencing burden to reach desired sequence depth saving time and cost
 
-- SNPs & Chromosome Phasing: The even sequence coverage from Omni-C™ libraries enables genome-wide SNP calling and downstream applications reliant on SNP information, such as chromosome phasing due to low switch error rates. Omni-C™ technology offers the best possible approach for whole genome physical phasing using Illumina short reads.
+- SNPs and chromosome phasing: The even sequence coverage from Omni-C™ libraries enables genome-wide SNP calling and downstream applications reliant on SNP information, such as chromosome phasing due to low switch error rates. Omni-C™ technology offers the best possible approach for whole genome physical phasing using Illumina short reads.
 
-- Large SVs Are Captured In Omni-C™ Data: The proximity ligation data can be used to detect and confirm chromosomal rearrangements in cancer samples at a high resolution. Using open-source software tools such as HiGlass, contact matrices enable the quick visualization of such large structural variants.
+- Large SVs are aaptured in Omni-C™ data: The proximity ligation data can be used to detect and confirm chromosomal rearrangements in cancer samples at a high resolution. Using open-source software tools such as HiGlass, contact matrices enable the quick visualization of such large structural variants.
 
-- This guide will take you step by step on how to QC your Omni-C library, how to interparate the QC results and how to generate :ref:`contact maps <GCM>`, study :ref: `chromatin structure<ITAD>`, use Omni-C data analyzing and enhancing your assembly and more. If you don't yet have a sequenced Omni-C library and you want to get familiar with the data, you can download Omni-C sequenced libraries from our publicaly available :ref:`data sets<DATASETS>`.
+- This guide will take you step by step on how to QC your Omni-C library, how to interparate the QC results and how to generate :ref:`contact maps <GCM>`, study :ref:`chromatin structure<ITAD>`, use Omni-C data analyzing and enhancing your assembly and more. If you don't yet have a sequenced Omni-C library and you want to get familiar with the data, you can download Omni-C sequenced libraries from our publicaly available :ref:`data sets<DATASETS>`.
 
 - The QC process starts with aligning the reads to a reference genome then retaining high quality mapped reads. From there the mapped data will be used to generating a pairs file with pairtools, which categorizes pairs by read type and insert distance, this step both flags and removes PCR duplicates. Once pairs are categorized, counts of each class are summed and reported.
 

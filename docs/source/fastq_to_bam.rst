@@ -151,7 +151,7 @@ Removig PCR duplicates
 
 ``pairtools dedup`` detects molecules that could be formed via PCR duplication and tags them as “DD” pair type. These pairs should be excluded from downstream analysis. Use the pairtools dedup command with the `--output-stats` option to save the dup stats into a text file.
 
-``pairtools dedup``` options:
+``pairtools dedup`` options:
 
 .. csv-table::
    :file: tables/dedup.csv
@@ -175,8 +175,8 @@ Removig PCR duplicates
 
 .. _GPB:
 
-Generate .pairs and bam files
-+++++++++++++++++++++++++++++
+Generating .pairs and bam files
++++++++++++++++++++++++++++++++
 
 The ``pairtools split`` command is used to split the final ``.pairsam`` into two files: ``.sam`` (or ``.bam``) and ``.pairs`` (``.pairsam`` has two extra columns containing the alignments from which the Omni-C pair was extracted, these two columns are not included in ``.pairs`` files)
 
@@ -253,4 +253,4 @@ Index the bam file:
 The `mapped.PT.bam` is the final bam file that will be used downstream steps.
 
 
-The above steps resulted in multiple intermediate files, to simplify the process and avoid intermediate files, you can pipe the steps as in the example above (:ref: `fastq to final valid pairs bam file - for the impatient <impatient>`)
+The above steps resulted in multiple intermediate files, to simplify the process and avoid intermediate files, you can pipe the steps as in the example above (:ref:`fastq to final valid pairs bam file - for the impatient<impatient>`)
