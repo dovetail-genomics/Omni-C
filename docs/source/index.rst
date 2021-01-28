@@ -52,6 +52,8 @@ Overview
    
    library_qc
 
+   contact_map
+
    epigenetics
    
    assembly
