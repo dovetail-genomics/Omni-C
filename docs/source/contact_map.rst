@@ -134,7 +134,7 @@ Add the bin path, and utils path to PATH and exit the folder:
 
    make sure to modify the following example with the path to your `pairix` installation folder. If you are not sure what is the path you can check it with the command `pwd` when located in the `pairix` folder.
 
-For any issues with ``pairix``, please refer to the `pairix documentation <https://github.com/4dn-dcic/pairix>`
+For any issues with ``pairix``, please refer to the `pairix documentation <https://github.com/4dn-dcic/pairix>`_
 
 From ``.pairs`` to ``cooler`` contact matrix
 ++++++++++++++++++++++++++++++++++++++++++++
@@ -219,7 +219,7 @@ As mentioned above, we will use the ``cload pairix`` utility of ``Cooler`` to ge
 |\*.cool                  |Name of output file                                                |
 +-------------------------+-------------------------------------------------------------------+
 
-*Command:**
+**Command:**
 
 .. code-block:: console
 
