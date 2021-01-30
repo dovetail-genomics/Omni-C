@@ -65,7 +65,7 @@ And then run the installation script:
 
 .. admonition:: Remember!
 
-   Once the installetion is completed, sign off and then sign back to your instance to refresh the database of applications.
+   Once the installation is completed, sign off and then sign back to your instance to refresh the database of applications.
 
 
 Input files
