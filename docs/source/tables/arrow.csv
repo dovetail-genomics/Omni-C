@@ -1,10 +1,10 @@
 ﻿Parameter,Function
-\-Xmx16000m,"The flag Xmx specifies the maximum memory allocation pool for a Java virtual machine\, from our experience 16000m works well when processing human data sets\, you can increase the allocated memory if needed."
+\-Xmx,"The flag Xmx specifies the maximum memory allocation pool for a Java virtual machine, from our experience 48000m works well when processing human data sets. If you are not sure how much memory your system has, run the command ``free -h`` and check the value under `total`."
 Djava.awt.headless=true,"Java is ran in a headless mode when the application does not interact with a user (if not specified\, the default is Djava.awt.headless=false)"
 arrowhead,The arrowhead command is used to identify contact domains along the diagonal
 \--threads,Specifies the numbers of threads to be used (integer number)
-\-k,"Normalization to be used. KR (Knight-Ruiz) balancing is recommended (other avilable normalization methods are VC and VC_SQRT or NONE,  this is not recommended)  "
+\-k,"Normalization to be used. KR (Knight-Ruiz) balancing is recommended (other avilable normalization methods are VC and VC_SQRT or NONE, (this is not recommended)  "
 \-m,Size of the sliding window along the diagonal in which contact domains will be found. Must be an even number as (m/2) is used as the increment for the sliding window. Recommended value: 2000 (this is also the default) 
 \-r,"Resolution for which Arrowhead will be run. We recommend running with various resolutions,  e.g.: 5kB (5000),  10kB (10000),  25kb (25000) and 50kb (50000). The quality of the results at the various resolutions is highly dependent on the depth of sequencing "
 \*.hic,"hic input file\, containing the contact matrix"
-\*.bedpe,"bedpe file containing the contact domains,  this is a text file with 12 fields in each row. For more details on the file format,  see the :ref:`table<TFORMAT>` below"
+output directory,"a path to the directory in which a bedpe file containing the contact domains will be saved (the name of the file is composed of the resolution followed by `_blocks.bedpe`). The bedpe file, is a text file with 16 fields in each row. For more details on the file format,  see the :ref:`table<TFORMAT>` below"

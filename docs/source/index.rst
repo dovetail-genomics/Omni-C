@@ -35,6 +35,11 @@ Overview
 
 - If this is your first time following this tutorial, please check the :ref:`Before you begin page <BYB>` first.
 
+|clock| The full process including :ref:`installation <BYB>`, :ref:`aligning and filtering <FTB>`, :ref:`library QC <LQ>`, :ref:`generating contact map <GCM>` and :ref:`identifying chromatin structures <EPIGENETICS>` can be completed in less than 48hr compute time for :ref:`a 800M reads human data set <DATASETS>` on an Ubuntu 18.04 machine with a 2T volume, 16 CPUs and 64GiB.
+
+.. |clock| image:: /images/clock.jpg
+           :scale: 5 %
+
 .. raw:: html
 
    <iframe src="https://player.vimeo.com/video/483661602" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>

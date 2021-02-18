@@ -1,9 +1,13 @@
 Field,Description
-chromosome,The chromosome that the domain is located on
+chr1/chr2,The chromosome that the domain is located on
 "x1,x2/y1,y2","The interval spanned by the domain (contact domains manifest as squares on the diagonal of a Hi-C matrix and as such: x1=y1,  x2=y2)"
+name,typically this field is empty (contains ".")
+score,typically this field is empty (contains ".")
+strand1,typically this field is empty (contains ".")
+strand2,typically this field is empty (contains ".")
 color,The color that the feature will be rendered as if loaded in Juicebox
-corner_score,"The corner score, a score indicating the likelihood that a pixel is at the corner of a contact domain. Higher values indicate a greater likelihood of being at the corner of a domain"
-Uvar,The variance of the upper triangle
-Lvar,The variance of the lower triangle
-Usign,\-1\*(sum of the sign of the entries in the upper triangle)
-Lsign,Sum of the sign of the entries in the lower triangle
+score,"The corner score, a score indicating the likelihood that a pixel is at the corner of a contact domain. Higher values indicate a greater likelihood of being at the corner of a domain"
+uVarScore,The variance of the upper triangle
+lVarScore,The variance of the lower triangle
+upSign,\-1\*(sum of the sign of the entries in the upper triangle)
+loSign,Sum of the sign of the entries in the lower triangle

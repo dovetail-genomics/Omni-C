@@ -1,0 +1,12 @@
+﻿Parameter,Function
+\-Xmx,"The flag Xmx specifies the maximum memory allocation pool for a Java virtual machine, from our experience 48000m works well when processing human data sets. If you are not sure how much memory your system has, run the command ``free -h`` and check the value under `total`."
+Djava.awt.headless=true,"Java is ran in a headless mode when the application does not interact with a user (if not specified\, the default is Djava.awt.headless=false)"
+eigenvector,The eigenvector command is used to calculate the first principal component of the Pearson's Observed/Expected matrix
+\-p,"Optional, force with curren parameters. When running with resolution < 500kb this may take very long time and by default the run will be canceled (output file will be empty). To force the run with any resolution < 500kb use the `-p` flag"
+VC/VC_SQRT/KR,Normalization to be used. KR (Knight-Ruiz) balancing is recommended.
+\*.hic,"hic input file\, containing the contact matrix"
+chr,"The chromosome for which the principle component will be calculated (make sure that same format as in the reference is used, e.g. `chrX` or `x`, depending on the reference)"
+output directory,"a path to the directory in which a bedpe file containing the contact domains will be saved (the name of the file is composed of the resolution followed by `_blocks.bedpe`). The bedpe file, is a text file with 16 fields in each row. For more details on the file format,  see the :ref:`table<TFORMAT>` below"
+BP,"resolution type (FRAG is another resolution type, this option is not covered in this documentation) "
+Resolution,Which resolution to be used for the calculation (integer). Since the goal here is to identify high level compartments  1M (100000) or 500k (500000) are typically sufficient
+Output file,"Name of text file for recording the calculated values. The output is a list of eigenvalues recorede for each bin, sorted by order on the chromosome. E.g. if the chromosome lenght 43Mb and a bin size of 1000000 was used, the output will be a list of 43 eigenvalues in text  format."
