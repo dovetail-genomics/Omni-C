@@ -8,6 +8,8 @@ Additional Dependencies
 +++++++++++++++++++++++
 
 `cutadapt <https://cutadapt.readthedocs.io/en/stable/>`_  - sudo apt install cutadapt
+`meryl <https://github.com/marbl/meryl>`_ 
+`merqury <https://github.com/marbl/merqury/wiki>`_
 
 
 scaffolding
@@ -18,13 +20,14 @@ In preparation
 Kmer analysis, QV and completness
 ---------------------------------
 
-In preparation 
+In this section we will not use the long distance infomation that is captured by the Omni-C proximity ligation libraries. Instead, we take advandage of the uniform coverafe of Omni-C libraries and demonstrate how, after trimming, the reads can be used just as shotgun sequencing, for kmer analysis, measuring assembly completness and QV.
+
+In short, kmer composition of the assembly and the reads will be used to evaluate the comletness of the assembly and bp quality. 
 
 Trimming
 ++++++++
 
-
-In this section we will not use the long distance infomation that is captured by the Omni-C proximity ligation libraries. Instead, we take advandage of the uniform coverafe of Omni-C libraries and demonstrate how, after trimming, the reads can be used just as shotgun sequencing, for kmer analysis, measuring assembly completness and QV.
+Before we build a kmer database from the Omni-C fastq files, we first need to remove the bridge sequecnce.  We use `cutadapt` to trim the bridge sequence from the reads. 
 
 +-------------+----------------------------------------------------------------------+
 |Option       |Function                                                              |
@@ -51,13 +54,22 @@ In this section we will not use the long distance infomation that is captured by
 +-------------+----------------------------------------------------------------------+
 
 
-cutadapt -j 48 -b <bridge sequence> -B <bridge sequence> -o <trimmed_output_R1.fastq> -p <trimmed_output_R2.fastq> <input_R1.fastq> <input_R2.fastq>
+Command:
 
-cutadapt -j 48 -b GGTTCGTCCA -B GGTTCGTCCA -o trim_OmniC_800M_R1.fastq -p trim_OmniC_800M_R2.fastqOmniC_800M_R1.fastq OmniC_800M_R2.fastq
+.. code-block:: console
+
+   cutadapt -j 48 -b <bridge sequence> -B <bridge sequence> -o <trimmed_output_R1.fastq> -p <trimmed_output_R2.fastq> <input_R1.fastq> <input_R2.fastq>
+
+Example:
+
+.. code-block:: console
+
+   cutadapt -j 48 -b GGTTCGTCCA -B GGTTCGTCCA -o trim_OmniC_800M_R1.fastq -p trim_OmniC_800M_R2.fastq OmniC_800M_R1.fastq OmniC_800M_R2.fastq
 
 
-https://s3.amazonaws.com/dovetail.pub/HiC/fastqs/OmniC_800M_R1.fastq
-for i in $(ls|grep trim);do echo $i;meryl k=21 count output ${i}.meryl ${i};done;
+kmer database
+=============
+
 
 .. code-block:: console
 
