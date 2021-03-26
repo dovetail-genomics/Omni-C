@@ -62,6 +62,12 @@ cd samtools-1.11/
 ./configure 
 make -j $(nproc)
 sudo make install
+
+## install htslib
+cd htslib-1.11
+make
+sudo make install
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 cd
 
 ###############
@@ -72,10 +78,10 @@ sudo apt-get install liblz4-tool
 ################################################################################
 ## Install preseq
 ################################################################################
-wget https://github.com/smithlabcode/preseq/releases/download/v3.1.1/preseq-3.1.1.tar.gz
-tar xvf preseq-3.1.1.tar.gz
+wget https://github.com/smithlabcode/preseq/releases/download/v3.1.2/preseq-3.1.2.tar.gz
+tar xvf preseq-3.1.2.tar.gz
 cd preseq-3*/
-./configure
+./configure --enable-hts CPPFLAGS='-I /home/ubuntu/samtools-1.11/htslib-1.11/' LDFLAGS='-L/home/ubuntu/samtools-1.11/htslib-1.11/'
 make -j $(nproc)
 sudo make install
 cd
