@@ -50,19 +50,21 @@ Overview
    :caption: Contents:
 
    before_you_begin
-   
+
    pre_alignment
-   
+
    fastq_to_bam
-   
+
    library_qc
 
    contact_map
 
    epigenetics
-   
+
    assembly
-   
+
+   variant_calling
+
    data_sets
 
    support
